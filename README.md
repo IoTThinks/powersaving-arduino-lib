@@ -19,7 +19,8 @@ PowerSaving Arduino Core 2.0.17 is built for low power ESP32 boards.
 * If you want custom development for your projects, [Contact Us](https://iotthinks.com/contact-us/)
 
 ## Instruction:
-- In platformio.ini, use the below in your 
+- In platformio.ini, use the below
+
 `platform_packages = platformio/framework-arduinoespressif32@https://github.com/IoTThinks/powersaving-arduino-lib/releases/download/2.0.17/esp32-2.0.17.zip`
 - In main.cpp, include the libraries
 ```
