@@ -31,13 +31,16 @@ PowerSaving Arduino Core 2.0.17 is built for low power ESP32 boards.
 - In setup(), enable PowerSaving mode
 
 ```
-// Enable BLE sleep
+#ifdef ESP32_PLATFORM
+#if !CONFIG_IDF_TARGET_ESP32C6
+  // Enable BLE sleep
   esp_err_t errBLESleep = esp_bt_sleep_enable();
   if (errBLESleep == ESP_OK) {
     Serial.println("Bluetooth sleep enabled successfully");
   } else {
     Serial.printf("Bluetooth sleep enable failed: %s\n", esp_err_to_name(errBLESleep));
   }
+#endif
 
 #if CONFIG_IDF_TARGET_ESP32C3
   esp_pm_config_esp32c3_t pm_config;
@@ -45,6 +48,8 @@ PowerSaving Arduino Core 2.0.17 is built for low power ESP32 boards.
   esp_pm_config_esp32s3_t pm_config;
 #elif CONFIG_IDF_TARGET_ESP32
   esp_pm_config_esp32_t pm_config;
+#elif CONFIG_IDF_TARGET_ESP32C6
+  esp_pm_config_t pm_config;
 #endif
 
   // Configure Power Management
@@ -55,6 +60,7 @@ PowerSaving Arduino Core 2.0.17 is built for low power ESP32 boards.
   } else {
     Serial.printf("Power Management failed to configure: %d\r\n", errPM);
   }
+#endif
 ```
 
 - In loop, make some vTaskDelay() to let MCU have some time to sleep
