@@ -65,7 +65,7 @@ PowerSaving Arduino Core 2.0.17 is built for low power ESP32 boards.
 
 - In loop, make some vTaskDelay() to let MCU have some time to sleep
 
-`vTaskDelay(pdMS_TO_TICKS(50)); // attempt to sleep`
+`vTaskDelay(pdMS_TO_TICKS(10)); // attempt to sleep`
 
 ## Demo
 * Default PowerSaving for ESP32 companion BLE. Reduced from 120mA down to 15-25mA.
